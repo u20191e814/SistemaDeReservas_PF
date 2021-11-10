@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "Detalles - FullDay";
+    ReservaEntidades.Promocion_FullDay pFullDay = ViewBag.Promocion_FullDay as ReservaEntidades.Promocion_FullDay;
+}
+<head>
+    <style type="text/css">
+        .claseparrafo{
+            font-size:12px;
+            text-align:center;
+            
+        }
+    </style>
+    </head>
+<body>
+    <div class="container col-md-12">
+         <div class="row">
+             <h3 style="text-align:center; color:orangered; " id="textoTitulo">@pFullDay.Descripcion</h3>
+             <h1 style="height:30px;"></h1>
+            
+             
+         </div>
+       
+        <div class="row">
+            <div class="col-md-6">
+                <img src=@pFullDay.rutaImagen width="100%" height="250" />
+                <p style="height:20px;"></p>
+
+
+                <h3 class="text-center " style="color:dodgerblue">RESUMEN</h3>
+                <p></p>
+                <p class="claseparrafo">
+                    Somos una agencia de viajes especializada en rutas a nivel nacional, autorizada por Mincetur. Nuestro servicio personalizado, capacidad operativa, peruanidad, y eficiencia nos posiciona como los especialistas en destinos nacionales.
+                    ¡Disfruta un día lleno de aventura con Nosotros!
+                </p>
+                <p style="height:20px;"></p>
+                <h3>INCLUYE</h3>
+                <p style="height:10px;"></p>
+                <ul style="font-size:12px">
+                    <li>Transporte turístico IDA Y VUELTA </li>
+                    <li>Desayuno Abordo cortesía (sandwich de pollo + frugos + manzana) </li>
+                    <li>1vino a los grupos de 7 a más participantes </li>
+                    <li>Botiquín de primeros auxilios (Termómetro, alcohol y oxímetro, etc) </li>
+                    <li>Baile con música </li>
+                    <li>Sorteo de vinos entre todos los participantes </li>
+                    <li>Pulsera de identificación. </li>
+                    <li>Guía Oficial de Turismo (Acreditado por MINCETUR) </li>
+                    <li>Asistencia permanente durante el viaje </li>
+                </ul>
+
+                <h3>EL BUS CUENTA </h3>
+                <p style="height:10px;"></p>
+                <ul style="font-size:12px">
+                    <li>Documentos en regla </li>
+                    <li>Soat </li>
+                    <li>Seguro contra accidentes </li>
+                    <li>Botiquín de emergencia </li>
+                    <li>Unidades controladas por GPS </li>
+                    <li>Permiso del ministerio de transportes </li>
+
+                </ul>
+
+
+                <h3>NO INCLUYE </h3>
+                <p style="height:10px;"></p>
+                <ul style="font-size:12px">
+                    <li>Almuerzo </li>
+                    <li>Entradas </li>
+
+
+                </ul>
+
+                <h3 style="color:red">RECUERDA </h3>
+                <p style="height:10px;"></p>
+                <ul style="font-size:12px">
+                    <li>Requisito indispensable D.N.I </li>
+                    <li>Se recomienda llevar Zapatos cómodos </li>
+                    <li>Llevar lentes de sol, bloqueador, repelente, gorro, casa ligera, medicinas personales </li>
+                    <li>OBLIGATORIO: Uso de mascarilla, protector facial, alcohol personal y declaración jurada de viajero.  </li>
+
+
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <h3 style="color:red"> Valido hasta  @pFullDay.fecha_valida</h3>
+                <p style="height:10px;"></p>
+                <h3 style="color:red">S/. @pFullDay.Precio - @pFullDay.tipoPromocion  </h3>
+                <p style="height:10px;"></p>
+                <h3>@pFullDay.ruta</h3>
+                <p style="height:10px;"></p>
+                <h4>Cupos validos: @pFullDay.Cupos</h4>
+                <p style="height:10px;"></p>
+                <div class="col-md-offset-4">
+                    <button type="button"  class="btn btn-danger ">RESERVAR</button>
+                </div>
+                <p style="height:30px"></p>
+                <h3 class="text-center " style="color:dodgerblue; ">CONSULTAS</h3>
+                <p></p>
+                <p class="claseparrafo">
+                    Si necesitas ayuda contáctanos a nuetro whatsapp 999999999
+                </p>
+                <p style="height:10px;"></p>
+                <h3>SALIDAS </h3>
+                <p style="height:10px;"></p>
+                <ul style="font-size:12px">
+                    <li>Viernes </li>
+                    <li>Sabado </li>
+                    <li>Domingo </li>
+
+                </ul>
+
+                <p style="height:10px;"></p>
+                <h3>RECOMENDACIONES </h3>
+                <p style="height:10px;"></p>
+                <ul style="font-size:12px">
+                    <li>Ropa ligera  </li>
+                    <li>Bloqueador solar  </li>
+                    <li>01 muda para deslizadores </li>
+                    <li>Cámara fotográfica </li>
+
+                </ul>
+
+                <p style="height:10px;"></p>
+                <h3>REGLAS CLARAS </h3>
+                <p style="height:10px;"></p>
+                <ul style="font-size:12px">
+                    <li>No acumulable con otras promociones.  </li>
+                    <li>Descuento válido para peruanos y extranjeros.  </li>
+                    <li>Menores de edad deben asistir acompañados por un adulto. </li>
+                    <li>Sujeto a cambio, ampliación de la vigencia, condiciones y/o fecha de entrega de retiro y despacho de esta oferta debido a las actuales eventualidades por el Coronavirus (Covid-19) </li>
+                    <li>Las imagenes son ilustrativas y/o referenciales. </li>
+                    <li>Para la salida del tour tiene que haber un mínimo grupo de 10 personas para activar el tour </li>
+                    <li>Es obligatorio el uso de la mascarilla y careta facial para abordar la unidad. </li>
+                    <li>Si el pasajero presenta fiebre o síntomas de gripe no podrá abordar la unidad turística. </li>
+                    <li>El uso de la mascarilla será obligatorio durante todo el viaje, pudiéndose quitar solo para almorzar. </li>
+                    <li>Una vez realizada la reserva puede ser transferible y endosable; sin embargo, no se aceptarán cambios de fecha, ni cancelaciones  </li>
+                    <li>Si el pasajero no se presenta el día del tour perderá el 100% de su pago, se considerará NO SHOW y no tendrá derecho a reclamo. </li>
+                    <li>Todos los pasajeros deberán llegar hasta 10 min antes de la hora de partida. </li>
+                    <li>El horario de partida será a la hora establecida, no se aceptará mínimo de tolerancia.En el caso de no encontrarse a la hora indicada, dirigirse al siguiente punto de embarque y comunicarse con el guía a cargo del tour </li>
+                    <li>Todos los pasajeros deberán portar su DNI, carné de extranjería o pasaporte para la excursión (adultos) </li>
+                    <li>Todos los menores que viajen solos o en compañía de personas que no son sus padres requieren de una autorización del padre o de la madre certificada por un notario </li>
+                </ul>
+            </div>
+        </div>
+        
+
+    </div>
+</body>
+
+
+
+<script>
+    document.getElementById("linksuperior").remove();
+    document.getElementById("grupoFiltros").remove();
+
+</script>

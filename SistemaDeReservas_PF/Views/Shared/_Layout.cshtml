@@ -1,0 +1,190 @@
+﻿@{
+    List<SelectListItem> listaOrigen = new List< SelectListItem>();
+    //listaOrigen.Add(new SelectListItem() {Text="Seleccione", Value="-1" });
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de reservas</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style type="text/css">
+        .helper-format {
+           width: 100%; font-family: Arial; font-size: 12px; 
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav navbar col-md-12 " id="linksuperior">
+        <a class="navbar-brand" href="#">
+            <img src="~/imgs/logoBus.png" width="30" height="30" alt="">
+        </a>
+
+        <ul class="nav nav-pills" style="font-size:14px; ">
+            <li class="nav-item">
+                <a class="nav-link" id="btnpromocion" href="/Proyecto/Promocion">PROMOCION</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="btnfullday" href="/Proyecto/FullDay">FULLDAY</a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="btnviaje" href="/Proyecto/Viaje">VIAJE</a>
+            </li>
+
+
+            <li class="nav-item" style="padding-left:14em;">
+                <a class="nav-link icon-bar" id="btnconsultaViajes" href="/Proyecto/Consultas">
+                    Consulta tu reserva
+                    <img src="~/imgs/search2.png" width="20" height="20" alt="" />
+
+                </a>
+
+            </li>
+        </ul>
+
+
+    </nav>
+    <div class="container" id="grupoFiltros">
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+
+                </p>
+
+            </div>
+        </div>
+        <p></p>
+        <p></p>
+
+        <div class="col-md-12">
+
+            <div class="row" style="font-size:14px;">
+                <div class="col-md-1 col-md-offset-1">
+                    <div class="form-group">
+                        Origen:
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.DropDownList("cboOrigen", listaOrigen, null, new { @class = "form-control form-select form-select-sm helper-format", id = "cboOrigen" })
+                    </div>
+
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        Destino:
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.DropDownList("cboDestino", listaOrigen, null, new { @class = "form-control form-select form-select-sm helper-format", id = "cboDestino" })
+                    </div>
+
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        Fecha:
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <input class="form-control form-control-sm" style="font-size:14px;" type="date" id="Fecha_Inicio" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-1">
+                    <div class="form-group">
+
+                        <input type="button" value="Buscar" style="font-size:14px;" class="btn btn-primary" id="btnBuscar" />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <p></p>
+    <p></p>
+
+
+    <div class="container body-content">
+        <p></p>
+        <p></p>
+        @RenderBody()
+
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+     
+    <script type="text/javascript">
+        $(document).ready(function () {
+            const myEvent = new CustomEvent("EventoSeleccion", {
+                detail: {},
+                bubbles: true,
+                cancelable: true,
+                composed: false,
+            });
+
+            function cargarOrigen() {
+                $.getJSON("/Proyecto/getOrigen",
+                    function (data) {
+                        var select = $("#cboOrigen");
+                        select.empty();
+                        $.each(data, function (index, itemData) {
+                            select.append($('<option/>', {
+                                value: itemData.Value,
+                                text: itemData.Text,
+                                Selected: itemData.Selected
+
+                            }));
+                        });
+                        cargarDestino();
+
+
+
+                    });
+
+            }
+
+            function cargarDestino() {
+                var cID = $("#cboOrigen").val();
+                $.getJSON("/Proyecto/getDestino", { Pk_origen: cID },
+                    function (data) {
+                        var select = $("#cboDestino");
+                        select.empty();
+                        $.each(data, function (index, itemData) {
+                            select.append($('<option/>', {
+                                value: itemData.Value,
+                                text: itemData.Text
+                            }));
+                        });
+                    });
+
+                document.querySelector("#cboDestino").dispatchEvent(myEvent);
+            }
+            $("#cboOrigen").change(function () {
+
+                cargarDestino();
+
+            });
+
+            cargarOrigen();
+        });
+
+
+    </script>
+</body>
+</html>
