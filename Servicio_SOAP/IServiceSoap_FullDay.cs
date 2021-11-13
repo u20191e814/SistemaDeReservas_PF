@@ -19,7 +19,7 @@ namespace Servicio_SOAP
         Estructura_Promocion_FullDay obtenerPromocionFullDayPorId(int Pk_promocionFullDay);
 
         [OperationContract]
-        Estructura_Post_int RegistrarReservaFullDay(ReservaFullDay reserva );
+        Estructura_Post_int RegistrarReservaFullDay(ReservaFullDay reserva );//reservafullday
 
 
         [OperationContract]
