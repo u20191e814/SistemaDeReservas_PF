@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ReservaEntidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ReservaEntidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Estructura_Promocion_FullDay_Lista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="data" nillable="true" type="tns:ArrayOfPromocion_FullDay" />
+      <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Estructura_Promocion_FullDay_Lista" nillable="true" type="tns:Estructura_Promocion_FullDay_Lista" />
+  <xs:complexType name="ArrayOfPromocion_FullDay">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Promocion_FullDay" nillable="true" type="tns:Promocion_FullDay" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPromocion_FullDay" nillable="true" type="tns:ArrayOfPromocion_FullDay" />
+  <xs:complexType name="Promocion_FullDay">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cupos" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pk_promocionFullDay" type="xs:int" />
+      <xs:element minOccurs="0" name="Precio" type="xs:double" />
+      <xs:element minOccurs="0" name="fecha_valida" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ruta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rutaImagen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoPromocion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Promocion_FullDay" nillable="true" type="tns:Promocion_FullDay" />
+  <xs:complexType name="Estructura_Promocion_FullDay">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="data" nillable="true" type="tns:Promocion_FullDay" />
+      <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Estructura_Promocion_FullDay" nillable="true" type="tns:Estructura_Promocion_FullDay" />
+</xs:schema>

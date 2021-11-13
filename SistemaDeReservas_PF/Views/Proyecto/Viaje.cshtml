@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "Viajes";
+}
+
+<h2 class="text-center" style="color:dodgerblue">Promociones</h2>
+
+<div class="container overflow-hidden" id="contenedorVV">
+    <p></p>
+    <h3 id="lblSinResultado" class="invisible" style="color:red;">No se encontraron resultados</h3>
+    <div id="contenedorViajes">
+        <div class="row gy-5">
+            <div class="col-3">
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script>
+
+   
+
+     $(document).ready(function () {
+
+         
+
+
+        function clickRerservaViaje(pk_promocion) {
+            //var url = '/Proyecto/PromocionViajeInformacion/';
+            //window.location = window.location.host + url;
+            location.href = "/Proyecto/PromocionViaje?pk_promocionViaje="+pk_promocion;
+            
+        }
+
+         
+        function buscarPromociones() {
+            var pk_origen = $("#cboOrigen").val();
+            var pk_destino = $("#cboDestino").val();
+            var FechaInico = document.getElementById("Fecha_Inicio").value;
+
+            $.getJSON("/Proyecto/getPromocionViajes", { pk_origen: pk_origen, pk_destino: pk_destino, fecha: FechaInico },
+                function (data) {
+                    const myNode = document.getElementById("contenedorViajes");
+                    while (myNode.lastChild) {
+                        myNode.lastChild.remove();
+                    }
+                    var contador = 0;
+                    let li = document.createElement('div');
+                    //li.id = "contenedorViajes"
+                    let li2 = document.createElement('div');
+                    li2.classList.add("row");
+                    li2.classList.add("gy-5");
+                    $.each(data, function (index, item) {
+                        contador += 1
+                        let li3 = document.createElement('div');
+                        li3.classList.add("col-3");
+                        let li4 = document.createElement('div');
+                        li4.classList.add("p-3");
+                        li4.classList.add("border");
+                        li4.classList.add("bg-light");
+
+                        let h33 = document.createElement("h3");
+                        h33.classList.add("text-center");
+                        h33.style.color = "Red";
+                        h33.textContent = "Valido hasta: " + item.fecha_valida;
+                        li4.appendChild(h33);
+
+                        let img1 = document.createElement("img");
+                        img1.width = 240;
+                        img1.height = 100;
+                        img1.src = item.rutaImagen;
+                        li4.appendChild(img1);
+
+                        let p1 = document.createElement("p");
+                        li4.appendChild(p1);
+
+                        let h3 = document.createElement("h3");
+                        h3.classList.add("text-center");
+                        h3.textContent = item.ruta;
+                        li4.appendChild(h3);
+
+                        let p2 = document.createElement("p");
+                        p2.textContent = item.Descripcion;
+                        li4.appendChild(p2);
+
+
+                        let h32 = document.createElement("h3");
+                        h32.style.color = "Red";
+                        h32.textContent = "S/ " + item.Precio;
+                        li4.appendChild(h32);
+
+                        
+
+                        let p3 = document.createElement("p");
+                        p3.textContent = "Cupos limitados: " + item.Cupos;
+                        li4.appendChild(p3);
+
+                        let buttom1 = document.createElement("button");
+                        buttom1.type = "submit";
+                        buttom1.classList.add("btn");
+                        buttom1.classList.add("btn-primary");
+                        buttom1.value = item.Pk_Promocion_viaje;
+                        buttom1.id = "btnReservarViaje";
+                        buttom1.textContent = "Reservar";
+                        buttom1.style = "float:right";
+                        buttom1.addEventListener("click", function () { clickRerservaViaje(item.Pk_Promocion_viaje) }, false);
+
+                        li4.appendChild(buttom1);
+
+                        li3.appendChild(li4);
+                        li2.appendChild(li3);
+
+
+                    });
+                    if (contador > 0) {
+                        li.appendChild(li2);
+                        //document.body.appendChild(l1);
+                        myNode.appendChild(li);
+                    }
+                    if (contador == 0) {
+                        document.getElementById("lblSinResultado").classList.remove("invisible");
+                    }
+                    else {
+                        document.getElementById("lblSinResultado").classList.add("invisible");
+                    }
+
+                });
+           
+
+        }
+ 
+
+        $("#btnBuscar").click(function () {
+
+            buscarPromociones();
+        });
+        function sleep(time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
+        }
+        document.querySelector("#cboDestino").addEventListener("EventoSeleccion", (event) => {
+            sleep(500).then(() => {
+                buscarPromociones();
+            });
+
+        });
+
+
+        document.getElementById("btnviaje").classList.add("active");
+    document.getElementById("btnpromocion").classList.remove("active");
+    document.getElementById("btnfullday").classList.remove("active");
+    document.getElementById("btnconsultaViajes").classList.remove("active");
+
+
+
+    });
+
+
+
+</script>
+
