@@ -15,7 +15,7 @@ namespace Servicio_SOAP
     public class ServiceSoap_FullDay : IServiceSoap_FullDay
     {
 
-        public Estructura_Post_int RegistrarReservaFullDay(ReservaFullDay reserva)
+        public Estructura_Post_int RegistrarReservaFullday(ReservaFullDay reserva)
         {
             return new Db(Settings.Default.SqlConexion).RegistrarReservaFullDay(reserva);
         }
