@@ -32,6 +32,6 @@ namespace Servicio_SOAP
         Estructura_Post_Bool EliminarReservaFullDay(int Pk_Reserva_FullDay);
 
         [OperationContract]
-        Estructura_ReservaFullDay_Lista ObtenerReservasFullDay();
+        Estructura_ReservaFullDay_Lista ObtenerReservasFullDay();//ReservaFullda
     }
 }
