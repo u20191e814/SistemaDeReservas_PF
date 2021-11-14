@@ -39,8 +39,8 @@ namespace ReservasDb
                     estructura.data = cn.QueryFirstOrDefault<int>(squery, param, null, 0, System.Data.CommandType.Text);
                 }
 
-                estructura.codigo = "OK";
-                estructura.mensaje = "OK";
+                estructura.codigo = "Ok";
+                estructura.mensaje = "Ok";
             }
             catch (Exception ex)
             {
