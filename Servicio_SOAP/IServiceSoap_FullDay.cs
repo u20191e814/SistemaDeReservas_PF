@@ -23,7 +23,7 @@ namespace Servicio_SOAP
 
 
         [OperationContract]
-        Estructura_Post_Bool ModificarReservaFullDay(ReservaFullDay reserva);
+        Estructura_Post_Bool ModificarReservaFullDay(ReservaFullDay reserva);//ModificarReservaFullDay
 
         [OperationContract]
         Estructura_ReservaFullDay ObtenerReservaFullDay(int Pk_Reserva_FullDay);
