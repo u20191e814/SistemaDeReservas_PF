@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:60705/ServiceSoap_FullDay.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://3.145.100.148/PublicacionSoap/ServiceSoap_FullDay.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceSoap_FullDay.xsd" MetadataType="Schema" ID="1a183778-9c2a-4586-a557-d14da0d03b98" SourceId="1" SourceUrl="http://localhost:60705/ServiceSoap_FullDay.svc?xsd=xsd1" />
-    <MetadataFile FileName="ServiceSoap_FullDay1.xsd" MetadataType="Schema" ID="8acb9c16-4263-48a3-8c82-e11220104949" SourceId="1" SourceUrl="http://localhost:60705/ServiceSoap_FullDay.svc?xsd=xsd0" />
-    <MetadataFile FileName="ServiceSoap_FullDay.wsdl" MetadataType="Wsdl" ID="1f30d65d-e83a-41df-a3bc-1f45f6cbcd94" SourceId="1" SourceUrl="http://localhost:60705/ServiceSoap_FullDay.svc?wsdl" />
-    <MetadataFile FileName="ServiceSoap_FullDay2.xsd" MetadataType="Schema" ID="ec8cb520-1a82-4d90-9dbc-dc82aa83f29f" SourceId="1" SourceUrl="http://localhost:60705/ServiceSoap_FullDay.svc?xsd=xsd2" />
-    <MetadataFile FileName="ServiceSoap_FullDay.disco" MetadataType="Disco" ID="8c62df28-5a79-4b80-831c-27ceec3c914a" SourceId="1" SourceUrl="http://localhost:60705/ServiceSoap_FullDay.svc?disco" />
+    <MetadataFile FileName="ServiceSoap_FullDay.xsd" MetadataType="Schema" ID="61cf62c4-c8d4-4626-8b2a-f9651ccb0239" SourceId="1" SourceUrl="http://3.145.100.148/PublicacionSoap/ServiceSoap_FullDay.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceSoap_FullDay1.xsd" MetadataType="Schema" ID="be744c63-55f3-46e9-bf4a-737effe360e4" SourceId="1" SourceUrl="http://3.145.100.148/PublicacionSoap/ServiceSoap_FullDay.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceSoap_FullDay2.xsd" MetadataType="Schema" ID="9dc3af6f-0301-4406-92ad-eea21f06ac9b" SourceId="1" SourceUrl="http://3.145.100.148/PublicacionSoap/ServiceSoap_FullDay.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceSoap_FullDay.disco" MetadataType="Disco" ID="24eb4663-a18d-4f7e-bfe2-1f8f63a9cae9" SourceId="1" SourceUrl="http://3.145.100.148/PublicacionSoap/ServiceSoap_FullDay.svc?disco" />
+    <MetadataFile FileName="ServiceSoap_FullDay.wsdl" MetadataType="Wsdl" ID="de496ef0-ad15-437c-98d3-066b57657fdf" SourceId="1" SourceUrl="http://3.145.100.148/PublicacionSoap/ServiceSoap_FullDay.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

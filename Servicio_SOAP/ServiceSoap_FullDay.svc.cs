@@ -47,5 +47,15 @@ namespace Servicio_SOAP
         {
             return new Db(Settings.Default.SqlConexion).ObtenerReservasFullDay();
         }
+
+        public Estructura_ViajesProgramados_FullDay_Lista obtenerViajesProgramadosFullDay(int pk_origen, int pk_destino, DateTime fecha)
+        {
+            return new Db(Settings.Default.SqlConexion).obtenerViajesProgramadosFullDay(pk_origen, pk_destino,fecha);
+        }
+
+        public Estructura_ViajesProgramados_FullDay obtenerViajeProgramadosFullDay(int Pk_ViajeProgramadoFullDay)
+        {
+            return new Db(Settings.Default.SqlConexion).obtenerViajeProgramadosFullDay(Pk_ViajeProgramadoFullDay);
+        }
     }
 }

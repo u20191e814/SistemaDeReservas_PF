@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SistemaDeReservas_PF</RootNamespace>
     <AssemblyName>SistemaDeReservas_PF</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44341</IISExpressSSLPort>
@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,25 +49,46 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>X:\Javier\DLLS\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.6.2.2\lib\net461\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.4.7.1\lib\net461\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -95,13 +117,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceFullDay\ServiceSoap_FullDay.disco" />
     <None Include="Connected Services\ServiceFullDay\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceFullDay\configuration.svcinfo" />
     <None Include="Connected Services\ServiceFullDay\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\ServiceFullDay\ServiceSoap_FullDay.disco" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -111,6 +133,7 @@
     <Content Include="Global.asax" />
     <Content Include="imgs\Ayacucho200x101.jpg" />
     <Content Include="imgs\Huacachina_301x154.jpg" />
+    <Content Include="imgs\Ica-Fullday300x180.jpg" />
     <Content Include="imgs\ICA-paracas.jpg" />
     <Content Include="imgs\Ica200x125.jpg" />
     <Content Include="imgs\Ica205x100.jpg" />
@@ -118,6 +141,14 @@
     <Content Include="imgs\search2.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_Promocion_FullDay_Lista.datasource" />
+    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_Promocion_FullDay.datasource" />
+    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_Post_Bool.datasource" />
+    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_Post_int.datasource" />
+    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_ReservaFullDay.datasource" />
+    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_ReservaFullDay_Lista.datasource" />
+    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_ViajesProgramados_FullDay_Lista.datasource" />
+    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_ViajesProgramados_FullDay.datasource" />
     <None Include="Connected Services\ServiceFullDay\ServiceSoap_FullDay.wsdl" />
     <None Include="Connected Services\ServiceFullDay\ServiceSoap_FullDay.xsd">
       <SubType>Designer</SubType>
@@ -128,8 +159,7 @@
     <None Include="Connected Services\ServiceFullDay\ServiceSoap_FullDay2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_Promocion_FullDay_Lista.datasource" />
-    <Content Include="Properties\DataSources\ReservaEntidades.Estructura_Promocion_FullDay.datasource" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -179,8 +209,10 @@
     <Content Include="Views\Proyecto\Promocion.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\Proyecto\PromocionViaje.cshtml" />
     <Content Include="Views\Proyecto\FullDayDetalles.cshtml" />
+    <Content Include="Views\Proyecto\ReservarFullDay.cshtml" />
+    <Content Include="Views\Proyecto\MensajeFinal.cshtml" />
+    <Content Include="Views\Proyecto\Test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

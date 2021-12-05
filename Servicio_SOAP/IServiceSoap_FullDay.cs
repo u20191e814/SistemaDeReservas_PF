@@ -33,5 +33,11 @@ namespace Servicio_SOAP
 
         [OperationContract]
         Estructura_ReservaFullDay_Lista ObtenerReservasFullDay();
+
+        [OperationContract]
+        Estructura_ViajesProgramados_FullDay_Lista obtenerViajesProgramadosFullDay(int pk_origen, int pk_destino, DateTime fecha);
+
+        [OperationContract]
+        Estructura_ViajesProgramados_FullDay obtenerViajeProgramadosFullDay(int Pk_ViajeProgramadoFullDay);
     }
 }

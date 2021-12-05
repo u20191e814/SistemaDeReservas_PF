@@ -31,14 +31,12 @@
      $(document).ready(function () {
 
          
-
-
-        function clickRerservaViaje(pk_promocion) {
-            //var url = '/Proyecto/PromocionViajeInformacion/';
-            //window.location = window.location.host + url;
-            location.href = "/Proyecto/PromocionViaje?pk_promocionViaje="+pk_promocion;
+        //function clickRerservaViaje(pk_promocion) {
+        //    //var url = '/Proyecto/PromocionViajeInformacion/';
+        //    //window.location = window.location.host + url;
+        //    location.href = "/Proyecto/PromocionViaje?pk_promocionViaje="+pk_promocion;
             
-        }
+        //}
 
          
         function buscarPromociones() {
@@ -111,7 +109,7 @@
                         buttom1.id = "btnReservarViaje";
                         buttom1.textContent = "Reservar";
                         buttom1.style = "float:right";
-                        buttom1.addEventListener("click", function () { clickRerservaViaje(item.Pk_Promocion_viaje) }, false);
+                        //buttom1.addEventListener("click", function () { clickRerservaViaje(item.Pk_Promocion_viaje) }, false);
 
                         li4.appendChild(buttom1);
 

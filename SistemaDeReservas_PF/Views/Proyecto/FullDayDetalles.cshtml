@@ -4,22 +4,21 @@
 }
 <head>
     <style type="text/css">
-        .claseparrafo{
-            font-size:12px;
-            text-align:center;
-            
+        .claseparrafo {
+            font-size: 12px;
+            text-align: center;
         }
     </style>
-    </head>
+</head>
 <body>
     <div class="container col-md-12">
-         <div class="row">
-             <h3 style="text-align:center; color:orangered; " id="textoTitulo">@pFullDay.Descripcion</h3>
-             <h1 style="height:30px;"></h1>
-            
-             
-         </div>
-       
+        <div class="row">
+            <h3 style="text-align:center; color:orangered; " id="textoTitulo">@pFullDay.Descripcion</h3>
+            <h1 style="height:30px;"></h1>
+
+
+        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <img src=@pFullDay.rutaImagen width="100%" height="250" />
@@ -82,16 +81,20 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-5">
-                <h3 style="color:red"> Valido hasta  @pFullDay.fecha_valida</h3>
+                @if (!string.IsNullOrEmpty(pFullDay.fecha_valida))
+                {
+                    <h3 style="color:red"> Valido hasta  @pFullDay.fecha_valida</h3>
+                }
+
                 <p style="height:10px;"></p>
-                <h3 style="color:red">S/. @pFullDay.Precio - @pFullDay.tipoPromocion  </h3>
+                <h3 style="color:red">S/. @pFullDay.Precio @pFullDay.tipoPromocion  </h3>
                 <p style="height:10px;"></p>
                 <h3>@pFullDay.ruta</h3>
                 <p style="height:10px;"></p>
                 <h4>Cupos validos: @pFullDay.Cupos</h4>
                 <p style="height:10px;"></p>
                 <div class="col-md-offset-4">
-                    <button type="button"  class="btn btn-danger ">RESERVAR</button>
+                    <button type="button" id="btnReservar" value=@pFullDay.Pk_promocionFullDay class="btn btn-danger ">RESERVAR</button>
                 </div>
                 <p style="height:30px"></p>
                 <h3 class="text-center " style="color:dodgerblue; ">CONSULTAS</h3>
@@ -142,15 +145,34 @@
                 </ul>
             </div>
         </div>
-        
+
 
     </div>
 </body>
 
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script>
-    document.getElementById("linksuperior").remove();
-    document.getElementById("grupoFiltros").remove();
+    $(document).ready(function () {
+
+
+        $("#btnReservar").click( function () {
+            var pk_promocion = document.getElementById("btnReservar").value;
+            
+
+             location.href = "/Proyecto/ReservarFullDay?Pk_promocion="+ pk_promocion;
+        });
+
+        document.getElementById("linksuperior").remove();
+        document.getElementById("grupoFiltros").remove();
+
+    });
+
+
 
 </script>

@@ -17,6 +17,33 @@
 
     </div>
 </div>
+<p style="height:20px;"></p>
+
+<div class="container">
+    <p style=" height:10px;"></p>
+    <h3 style="color:dodgerblue; " class="text-center">Resultados de la Busqueda</h3>
+    <p id="lblResultadoFullday" class="invisible" style="color:red; font-size:12px;">No existe viajes programados </p>
+
+    <div class="container col-md-12">
+        <p></p>
+        <table id="tablaResultadosFullday" class="table table-striped table-bordered table-sm table-dark" cellspacing="0" width="100%">
+
+            <tr>
+                <th>Ruta </th>
+                <th>Precio</th>
+                <th>Cupos</th>
+                <th>Opciones </th>
+
+            </tr>
+
+
+
+        </table>
+
+
+    </div>
+
+</div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -25,16 +52,22 @@
 
 <script>
 
+    function Click_ViajesProgramados(ctl) {
+            var sss = ctl.value;
+           var convertido = JSON.parse(sss);
+
+           location.href = "/Proyecto/FullDayDetalles?Pk_ViajesProgramados="+convertido.Pk_ViajesProgramados_FullDay;
+       }
    
    $(document).ready(function () {
 
           
         function clickPromocionFullDay(pk_promocionFullDay) {
-            //var url = '/Proyecto/PromocionViajeInformacion/';
-            //window.location = window.location.host + url;
+            
             location.href = "/Proyecto/FullDayDetalles?Pk_FullDayPromocion="+ pk_promocionFullDay;
             
-        }
+       }
+       
 
         function buscarPromociones() {
             var pk_origen = $("#cboOrigen").val();
@@ -128,8 +161,44 @@
                     else {
                         document.getElementById("lblSinResultadoFullDay").classList.add("invisible");
                     }
-            });
+                });
 
+           
+
+            $.getJSON("/Proyecto/getViajesProgramadosFullDay", { pk_origen: pk_origen, pk_destino: pk_destino, fecha: FechaInico },
+                function (data) {
+                    var contador = 0;
+                     var tablla = document.getElementById('tablaResultadosFullday');
+                        while (tablla.rows.length > 1) {
+                            tablla.deleteRow(1);
+                        }     
+
+                        var tblFullday = $("#tablaResultadosFullday");  
+   
+                    $.each(data, function (index, item)
+                    {
+                         contador += 1
+                        var tb5 = $("<tr></tr>");
+                        tb5.html(
+                            ("<td>" + item.Ruta + "</td>")
+                             
+                            + " " + ("<td>" + item.Precio + "</td>")
+                            + " " + ("<td>" + item.cupos + "</td>")
+                            + "<td>" +  "<button type='button'  value='" + JSON.stringify(item) + "'  onclick='Click_ViajesProgramados(this);' class='btn btn-warning btn-sm '> Mas detalles " + "</button>" +
+                            "</td>"
+
+                        );
+                        tblFullday.append(tb5);
+
+                    });
+
+                    if (contador == 0) {
+                         document.getElementById("lblResultadoFullday").classList.remove("invisible");
+                    }
+                    else {
+                         document.getElementById("lblResultadoFullday").classList.add("invisible");
+                    }
+                });
         }
 
         

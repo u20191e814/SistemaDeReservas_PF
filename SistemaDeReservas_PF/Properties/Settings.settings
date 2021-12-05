@@ -3,7 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="UrlServiceRest" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://18.116.71.65:80/</Value>
+      <Value Profile="(Default)">http://52.15.155.122:7030/</Value>
+    </Setting>
+    <Setting Name="IpRabbitServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">3.16.75.53</Value>
+    </Setting>
+    <Setting Name="TokenConsultarDni" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">a1ed30da07efcf73b3f980ccc092743ec2106c1ef2aef96e48a6411e906d490a</Value>
+    </Setting>
+    <Setting Name="ActivarValidacionDni" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

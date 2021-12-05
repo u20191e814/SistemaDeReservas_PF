@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SistemaDeReservas_PF.Properties {
+namespace Rabbitmq_Listening.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,37 +25,10 @@ namespace SistemaDeReservas_PF.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://52.15.155.122:7030/")]
-        public string UrlServiceRest {
-            get {
-                return ((string)(this["UrlServiceRest"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3.16.75.53")]
-        public string IpRabbitServer {
+        public string IpRabbitMq {
             get {
-                return ((string)(this["IpRabbitServer"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("a1ed30da07efcf73b3f980ccc092743ec2106c1ef2aef96e48a6411e906d490a")]
-        public string TokenConsultarDni {
-            get {
-                return ((string)(this["TokenConsultarDni"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ActivarValidacionDni {
-            get {
-                return ((bool)(this["ActivarValidacionDni"]));
+                return ((string)(this["IpRabbitMq"]));
             }
         }
     }

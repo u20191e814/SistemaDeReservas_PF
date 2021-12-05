@@ -24,10 +24,11 @@ namespace ReservasDb
             {
                 using (cn = new SqlConnection(sqlconexion))
                 {
-                    string squery = string.Format(" insert into [Proyecto].[dbo].[Reserva_FullDay] (Fecha_Viaje, Fk_Origen, Fk_Destino, precioUnitario, cantidad, precioTotal, Dni_cliente,Nombre, Apellido, Telefono,correo,Estado ) " +
-                        "  output inserted.Pk_Reserva_FullDay   values(@fechaViaje, {0},{1},@precioUnitario, {2},@precioTotal, @dni,@nombre, @apellido, @telefono, @correo, @estado )", reserva.Fk_Origen, reserva.Fk_Destino, reserva.cantidad);
+                    string squery = string.Format(" insert into [Proyecto].[dbo].[Reserva_FullDay] (Fecha_Viaje, Fk_Origen, Fk_Destino, precioUnitario, cantidad, precioTotal, Dni_cliente,Nombre, Apellido, Telefono,correo,Estado,Fecha_Generado ) " +
+                        "  output inserted.Pk_Reserva_FullDay   values(@fechaViaje, {0},{1},@precioUnitario, {2},@precioTotal, @dni,@nombre, @apellido, @telefono, @correo, @estado,@fechagenerado )", reserva.Fk_Origen, reserva.Fk_Destino, reserva.cantidad);
                     var param = new DynamicParameters();
                     param.Add("@fechaViaje", reserva.Fecha_Viaje);
+                    param.Add("@fechagenerado", reserva.Fecha_Generado);
                     param.Add("@precioUnitario", reserva.precioUnitario);
                     param.Add("@precioTotal", reserva.precioTotal);
                     param.Add("@dni", reserva.Dni_cliente);
@@ -56,6 +57,114 @@ namespace ReservasDb
             }
             return estructura;
         }
+
+        public Estructura_ConsultaReservas GetReservasPorDni(string dni)
+        {
+            Estructura_ConsultaReservas estructura = new Estructura_ConsultaReservas();
+            SqlConnection cn = null;
+            estructura.data = new List<ConsultaReservas>();
+            try
+            {
+                using (cn = new SqlConnection(sqlconexion))
+                {
+                    string squery = string.Format("  select r.Pk_Reserva_FullDay,o.Nombre origen,d.Nombre destino, format (r.Fecha_Viaje,'dd/MM/yyyy') fecha_viaje, format (r.Fecha_Generado,'dd/MM/yyyy') Fecha_Generado, r.precioUnitario, r.cantidad, r.precioTotal, r.Estado     " +
+                        "  from [Proyecto].[dbo].[Reserva_FullDay] r inner join[Proyecto].[dbo].[Origen] o on(r.Fk_Origen = o.Pk_Origen) "+
+                        "  inner join Proyecto.dbo.Destino d on(r.Fk_Destino = d.Pk_Destino)   where r.Dni_cliente = @dni ");
+                    var param = new DynamicParameters();
+                    param.Add("@dni", dni);
+                    estructura.data = cn.Query<ConsultaReservas>(squery, param, null, true, 0, System.Data.CommandType.Text).ToList();
+                }
+                estructura.codigo = "OK";
+                estructura.mensaje = "OK";
+            }
+            catch (Exception ex)
+            {
+                estructura.codigo = "400";
+                estructura.mensaje = ex.Message;
+            }
+            finally
+            {
+                if (cn != null)
+                {
+                    cn.Close();
+                }
+            }
+
+
+            return estructura;
+        }
+
+        public Estructura_ViajesProgramados_FullDay_Lista obtenerViajesProgramadosFullDay(int pk_origen, int pk_destino, DateTime fecha)
+        {
+            Estructura_ViajesProgramados_FullDay_Lista estructura = new Estructura_ViajesProgramados_FullDay_Lista();
+            SqlConnection cn = null;
+            try
+            {
+                using (cn = new SqlConnection(sqlconexion))
+                {
+                    string squery = string.Format(" select v.Pk_ViajesProgramados_FullDay,  o.Nombre + ' - '+ d.Nombre AS Ruta , v.Precio, v.cupos,v.rutaImagen " +
+                        "  from [Proyecto].[dbo].[ViajesProgramados_FullDay] v inner join Proyecto.dbo.Origen o on(v.Fk_origen = o.Pk_origen) "+
+                        "  inner join Proyecto.dbo.Destino d on(d.Pk_Destino = v.Fk_destino) "+
+                        "  where v.Fk_origen = {0} and Fk_destino = {1} and convert(date, Fecha) = convert(date, @fecha)", pk_origen, pk_destino);
+                    var param = new DynamicParameters();
+                    param.Add("@fecha", fecha);
+                    estructura.data = cn.Query<ViajesProgramados_FullDay>(squery, param, null, true, 0, System.Data.CommandType.Text).ToList();
+                }
+                estructura.codigo = "OK";
+                estructura.mensaje = "OK";
+            }
+            catch (Exception ex)
+            {
+                estructura.codigo = "400";
+                estructura.mensaje = ex.Message;
+            }
+            finally
+            {
+                if (cn != null)
+                {
+                    cn.Close();
+                }
+            }
+
+
+            return estructura;
+        }
+
+        public Estructura_ViajesProgramados_FullDay obtenerViajeProgramadosFullDay(int pk_ViajeProgramadoFullDay)
+        {
+            Estructura_ViajesProgramados_FullDay estructura = new Estructura_ViajesProgramados_FullDay();
+            SqlConnection cn = null;
+            try
+            {
+                using (cn = new SqlConnection(sqlconexion))
+                {
+                    string squery = string.Format(" select v.Pk_ViajesProgramados_FullDay,  o.Nombre + ' - '+ d.Nombre AS Ruta , v.Precio, v.cupos,v.rutaImagen " +
+                        "  from [Proyecto].[dbo].[ViajesProgramados_FullDay] v inner join Proyecto.dbo.Origen o on(v.Fk_origen = o.Pk_origen) " +
+                        "  inner join Proyecto.dbo.Destino d on(d.Pk_Destino = v.Fk_destino) " +
+                        "  where v.Pk_ViajesProgramados_FullDay ={0}", pk_ViajeProgramadoFullDay);
+                  
+                    estructura.data = cn.QueryFirstOrDefault<ViajesProgramados_FullDay>(squery, null, null, 0, System.Data.CommandType.Text);
+                }
+                estructura.codigo = "OK";
+                estructura.mensaje = "OK";
+            }
+            catch (Exception ex)
+            {
+                estructura.codigo = "400";
+                estructura.mensaje = ex.Message;
+            }
+            finally
+            {
+                if (cn != null)
+                {
+                    cn.Close();
+                }
+            }
+
+
+            return estructura;
+        }
+
         public Estructura_Post_Bool ModificarReservaFullDay(ReservaFullDay reserva)
         {
             Estructura_Post_Bool estructura = new Estructura_Post_Bool();

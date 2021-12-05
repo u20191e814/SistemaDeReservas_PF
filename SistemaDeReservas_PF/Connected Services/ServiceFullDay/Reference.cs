@@ -26,6 +26,48 @@ namespace SistemaDeReservas_PF.ServiceFullDay {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/obtenerPromocionFullDayPorId", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/obtenerPromocionFullDayPorIdResponse")]
         System.Threading.Tasks.Task<ReservaEntidades.Estructura_Promocion_FullDay> obtenerPromocionFullDayPorIdAsync(int Pk_promocionFullDay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/RegistrarReservaFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/RegistrarReservaFullDayResponse")]
+        ReservaEntidades.Estructura_Post_int RegistrarReservaFullDay(ReservaEntidades.ReservaFullDay reserva);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/RegistrarReservaFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/RegistrarReservaFullDayResponse")]
+        System.Threading.Tasks.Task<ReservaEntidades.Estructura_Post_int> RegistrarReservaFullDayAsync(ReservaEntidades.ReservaFullDay reserva);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/ModificarReservaFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/ModificarReservaFullDayResponse")]
+        ReservaEntidades.Estructura_Post_Bool ModificarReservaFullDay(ReservaEntidades.ReservaFullDay reserva);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/ModificarReservaFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/ModificarReservaFullDayResponse")]
+        System.Threading.Tasks.Task<ReservaEntidades.Estructura_Post_Bool> ModificarReservaFullDayAsync(ReservaEntidades.ReservaFullDay reserva);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/ObtenerReservaFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/ObtenerReservaFullDayResponse")]
+        ReservaEntidades.Estructura_ReservaFullDay ObtenerReservaFullDay(int Pk_Reserva_FullDay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/ObtenerReservaFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/ObtenerReservaFullDayResponse")]
+        System.Threading.Tasks.Task<ReservaEntidades.Estructura_ReservaFullDay> ObtenerReservaFullDayAsync(int Pk_Reserva_FullDay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/EliminarReservaFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/EliminarReservaFullDayResponse")]
+        ReservaEntidades.Estructura_Post_Bool EliminarReservaFullDay(int Pk_Reserva_FullDay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/EliminarReservaFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/EliminarReservaFullDayResponse")]
+        System.Threading.Tasks.Task<ReservaEntidades.Estructura_Post_Bool> EliminarReservaFullDayAsync(int Pk_Reserva_FullDay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/ObtenerReservasFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/ObtenerReservasFullDayResponse")]
+        ReservaEntidades.Estructura_ReservaFullDay_Lista ObtenerReservasFullDay();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/ObtenerReservasFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/ObtenerReservasFullDayResponse")]
+        System.Threading.Tasks.Task<ReservaEntidades.Estructura_ReservaFullDay_Lista> ObtenerReservasFullDayAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/obtenerViajesProgramadosFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/obtenerViajesProgramadosFullDayResponse")]
+        ReservaEntidades.Estructura_ViajesProgramados_FullDay_Lista obtenerViajesProgramadosFullDay(int pk_origen, int pk_destino, System.DateTime fecha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/obtenerViajesProgramadosFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/obtenerViajesProgramadosFullDayResponse")]
+        System.Threading.Tasks.Task<ReservaEntidades.Estructura_ViajesProgramados_FullDay_Lista> obtenerViajesProgramadosFullDayAsync(int pk_origen, int pk_destino, System.DateTime fecha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/obtenerViajeProgramadosFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/obtenerViajeProgramadosFullDayResponse")]
+        ReservaEntidades.Estructura_ViajesProgramados_FullDay obtenerViajeProgramadosFullDay(int Pk_ViajeProgramadoFullDay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap_FullDay/obtenerViajeProgramadosFullDay", ReplyAction="http://tempuri.org/IServiceSoap_FullDay/obtenerViajeProgramadosFullDayResponse")]
+        System.Threading.Tasks.Task<ReservaEntidades.Estructura_ViajesProgramados_FullDay> obtenerViajeProgramadosFullDayAsync(int Pk_ViajeProgramadoFullDay);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +111,62 @@ namespace SistemaDeReservas_PF.ServiceFullDay {
         
         public System.Threading.Tasks.Task<ReservaEntidades.Estructura_Promocion_FullDay> obtenerPromocionFullDayPorIdAsync(int Pk_promocionFullDay) {
             return base.Channel.obtenerPromocionFullDayPorIdAsync(Pk_promocionFullDay);
+        }
+        
+        public ReservaEntidades.Estructura_Post_int RegistrarReservaFullDay(ReservaEntidades.ReservaFullDay reserva) {
+            return base.Channel.RegistrarReservaFullDay(reserva);
+        }
+        
+        public System.Threading.Tasks.Task<ReservaEntidades.Estructura_Post_int> RegistrarReservaFullDayAsync(ReservaEntidades.ReservaFullDay reserva) {
+            return base.Channel.RegistrarReservaFullDayAsync(reserva);
+        }
+        
+        public ReservaEntidades.Estructura_Post_Bool ModificarReservaFullDay(ReservaEntidades.ReservaFullDay reserva) {
+            return base.Channel.ModificarReservaFullDay(reserva);
+        }
+        
+        public System.Threading.Tasks.Task<ReservaEntidades.Estructura_Post_Bool> ModificarReservaFullDayAsync(ReservaEntidades.ReservaFullDay reserva) {
+            return base.Channel.ModificarReservaFullDayAsync(reserva);
+        }
+        
+        public ReservaEntidades.Estructura_ReservaFullDay ObtenerReservaFullDay(int Pk_Reserva_FullDay) {
+            return base.Channel.ObtenerReservaFullDay(Pk_Reserva_FullDay);
+        }
+        
+        public System.Threading.Tasks.Task<ReservaEntidades.Estructura_ReservaFullDay> ObtenerReservaFullDayAsync(int Pk_Reserva_FullDay) {
+            return base.Channel.ObtenerReservaFullDayAsync(Pk_Reserva_FullDay);
+        }
+        
+        public ReservaEntidades.Estructura_Post_Bool EliminarReservaFullDay(int Pk_Reserva_FullDay) {
+            return base.Channel.EliminarReservaFullDay(Pk_Reserva_FullDay);
+        }
+        
+        public System.Threading.Tasks.Task<ReservaEntidades.Estructura_Post_Bool> EliminarReservaFullDayAsync(int Pk_Reserva_FullDay) {
+            return base.Channel.EliminarReservaFullDayAsync(Pk_Reserva_FullDay);
+        }
+        
+        public ReservaEntidades.Estructura_ReservaFullDay_Lista ObtenerReservasFullDay() {
+            return base.Channel.ObtenerReservasFullDay();
+        }
+        
+        public System.Threading.Tasks.Task<ReservaEntidades.Estructura_ReservaFullDay_Lista> ObtenerReservasFullDayAsync() {
+            return base.Channel.ObtenerReservasFullDayAsync();
+        }
+        
+        public ReservaEntidades.Estructura_ViajesProgramados_FullDay_Lista obtenerViajesProgramadosFullDay(int pk_origen, int pk_destino, System.DateTime fecha) {
+            return base.Channel.obtenerViajesProgramadosFullDay(pk_origen, pk_destino, fecha);
+        }
+        
+        public System.Threading.Tasks.Task<ReservaEntidades.Estructura_ViajesProgramados_FullDay_Lista> obtenerViajesProgramadosFullDayAsync(int pk_origen, int pk_destino, System.DateTime fecha) {
+            return base.Channel.obtenerViajesProgramadosFullDayAsync(pk_origen, pk_destino, fecha);
+        }
+        
+        public ReservaEntidades.Estructura_ViajesProgramados_FullDay obtenerViajeProgramadosFullDay(int Pk_ViajeProgramadoFullDay) {
+            return base.Channel.obtenerViajeProgramadosFullDay(Pk_ViajeProgramadoFullDay);
+        }
+        
+        public System.Threading.Tasks.Task<ReservaEntidades.Estructura_ViajesProgramados_FullDay> obtenerViajeProgramadosFullDayAsync(int Pk_ViajeProgramadoFullDay) {
+            return base.Channel.obtenerViajeProgramadosFullDayAsync(Pk_ViajeProgramadoFullDay);
         }
     }
 }

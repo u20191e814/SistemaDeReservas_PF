@@ -21,7 +21,7 @@ namespace Test_Proyecto
                 {
                     Apellido = "apellido ",
                     cantidad = 1,
-                    correo = "correo",
+                    correo = "correo@hotmail.com",
                     Dni_cliente = "00011",
                     Estado = "Activo",
                     Fecha_Viaje = DateTime.Now,
@@ -38,7 +38,7 @@ namespace Test_Proyecto
             var tarea =  client.RegistrarReservaFullDayAsync(reserva);
                 tarea.Wait();
                Estructura_Post_int t = tarea.Result;
-                 Assert.AreEqual(2, t.data);
+                 Assert.AreEqual(3, t.data);
              
            
         }
@@ -108,5 +108,6 @@ namespace Test_Proyecto
             Assert.AreEqual(true, t.data);
 
         }
+   
     }
 }
