@@ -10,7 +10,7 @@ namespace ReservaEntidades
     {
         public bool success { get; set; }
         public string message { get; set; }
-        public datos_persona data { get; set; }
+        public datos_persona data { get; set; } //ok agregado
     }
     public class datos_persona
     {
