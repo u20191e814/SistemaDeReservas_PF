@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SqlConexion" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Server=database-test.c94qouacmsdm.us-east-2.rds.amazonaws.com; User Id=admin; Password=123456789;</Value>
+      <Value Profile="(Default)">Server=database-test.c94qouacmsdm.us-east-2.rds.amazonaws.com; User Id=admin; Password=1234567891;</Value>
     </Setting>
   </Settings>
 </SettingsFile>
