@@ -216,7 +216,7 @@ namespace SistemaDeReservas_PF.Controllers
 
             using (ServiceFullDay.ServiceSoap_FullDayClient c = new ServiceFullDay.ServiceSoap_FullDayClient())
             {
-                 
+                
                Estructura_Post_int insertado= c.RegistrarReservaFullDay(newReservaFullDay);
                 if (insertado.codigo!="OK")
                 {

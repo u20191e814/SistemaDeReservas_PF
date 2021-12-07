@@ -15,6 +15,7 @@ namespace ReservasDb
         public Db(string sqlconexion)
         {
             this.sqlconexion = sqlconexion;
+            //Se asigna la cadena de conexion
         }
         public Estructura_Post_int RegistrarReservaFullDay(ReservaFullDay reserva)
         {
