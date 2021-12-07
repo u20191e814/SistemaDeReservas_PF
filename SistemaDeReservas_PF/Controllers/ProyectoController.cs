@@ -179,7 +179,7 @@ namespace SistemaDeReservas_PF.Controllers
                 return View();
             }
 
-            bool validaciondni = false;
+            bool validaciondni = false;//validacion DNI
             if (Settings.Default.ActivarValidacionDni)
             {
                 using (HttpClient cliente = new HttpClient())
