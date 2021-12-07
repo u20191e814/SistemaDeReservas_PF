@@ -11,6 +11,7 @@ namespace Rabbitmq_Listening
 {
     class Program
     {
+        //se agrego colas
         static void Main(string[] args)
         {
             Console.Title = "Sistemas Distribuidos UPC";
